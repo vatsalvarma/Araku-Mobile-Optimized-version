@@ -73,7 +73,7 @@ const CupSection: React.FC = () => {
         x: "-25vw", // Adjusted slightly further left so it clears the ingredients
         duration: 1,
         ease: "power2.out"
-      }, "-=0.5"); 
+      }, "-=1.0"); 
 
     }, sectionRef);
 
