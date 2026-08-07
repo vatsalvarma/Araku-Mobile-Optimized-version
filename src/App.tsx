@@ -1,4 +1,3 @@
-import React from 'react';
 import LoadingScreen from './components/LoadingScreen';
 import AboutSection from './components/AboutSection';
 import StorySection from './components/StorySection';

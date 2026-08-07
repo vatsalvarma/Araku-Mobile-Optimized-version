@@ -49,13 +49,13 @@ const FourthSection: React.FC = () => {
           { scale: 0, x: 0, y: 0, rotationX: 0, rotationY: 0, rotation: 0, opacity: 0 },
           { 
             scale: () => 0.8 + Math.random() * 0.5,
-            x: (index, target) => {
+            x: (_, target) => {
                const originalIndex = particles.indexOf(target as Element);
                const angle = (originalIndex / particles.length) * Math.PI * 2;
                const distance = 15 + Math.random() * 20; // 15vw to 35vw
                return Math.cos(angle) * distance + "vw";
             },
-            y: (index, target) => {
+            y: (_, target) => {
                const originalIndex = particles.indexOf(target as Element);
                const angle = (originalIndex / particles.length) * Math.PI * 2;
                const distance = 15 + Math.random() * 20; // 15vh to 35vh
@@ -76,13 +76,13 @@ const FourthSection: React.FC = () => {
           { scale: 0, x: 0, y: 0, rotation: 0, opacity: 0 },
           { 
             scale: () => 0.8 + Math.random() * 0.5,
-            x: (index, target) => {
+            x: (_, target) => {
                const originalIndex = particles.indexOf(target as Element);
                const angle = (originalIndex / particles.length) * Math.PI * 2;
                const distance = 15 + Math.random() * 20; 
                return Math.cos(angle) * distance + "vw";
             },
-            y: (index, target) => {
+            y: (_, target) => {
                const originalIndex = particles.indexOf(target as Element);
                const angle = (originalIndex / particles.length) * Math.PI * 2;
                const distance = 15 + Math.random() * 20; 
