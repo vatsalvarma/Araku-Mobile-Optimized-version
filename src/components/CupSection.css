@@ -1,18 +1,11 @@
 .cup-section {
   position: relative;
-  height: 250vh; /* Enough scroll height for the rolling animation */
+  height: 100vh; /* Exactly 100vh as requested */
   width: 100vw;
-  z-index: 30; /* Between FourthSection (20) and FifthSection (40) */
+  z-index: 30;
   background-image: url('/bgg4.png');
   background-size: cover;
   background-position: center;
-}
-
-.cup-sticky-content {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
   overflow: hidden;
   display: flex;
   justify-content: center;

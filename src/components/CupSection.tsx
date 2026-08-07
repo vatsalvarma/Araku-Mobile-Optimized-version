@@ -19,8 +19,8 @@ const CupSection: React.FC = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom bottom",
+          start: "top 70%", // Start as soon as it enters the viewport
+          end: "bottom 30%", // End as it leaves
           scrub: 1, 
         }
       });
@@ -82,7 +82,6 @@ const CupSection: React.FC = () => {
 
   return (
     <section className="cup-section" ref={sectionRef}>
-      <div className="cup-sticky-content">
         
         <img 
           src={`${import.meta.env.BASE_URL}Araku_logo.png`} 
@@ -110,7 +109,6 @@ const CupSection: React.FC = () => {
           />
         </div>
 
-      </div>
     </section>
   );
 };
