@@ -20,8 +20,8 @@ const CupSection: React.FC = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top", // Lock it to the screen when it hits the top
-          end: "+=150%", // Keep it locked while they scroll down 1.5x the screen height
-          scrub: 1, 
+          end: "+=200%", // Keep it locked longer so they are forced to watch it
+          scrub: true, // Remove the 1-second lag, tie animation directly to scroll position
           pin: true, // This locks the screen in place so they see the full animation!
         }
       });
