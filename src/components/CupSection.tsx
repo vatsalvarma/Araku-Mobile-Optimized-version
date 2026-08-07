@@ -19,10 +19,9 @@ const CupSection: React.FC = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top top", // Lock it to the screen when it hits the top
-          end: "+=200%", // Keep it locked longer so they are forced to watch it
-          scrub: true, // Remove the 1-second lag, tie animation directly to scroll position
-          pin: true, // This locks the screen in place so they see the full animation!
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1, 
         }
       });
 
@@ -83,6 +82,7 @@ const CupSection: React.FC = () => {
 
   return (
     <section className="cup-section" ref={sectionRef}>
+      <div className="cup-sticky-content">
         
         <img 
           src={`${import.meta.env.BASE_URL}Araku_logo.png`} 
@@ -110,6 +110,7 @@ const CupSection: React.FC = () => {
           />
         </div>
 
+      </div>
     </section>
   );
 };

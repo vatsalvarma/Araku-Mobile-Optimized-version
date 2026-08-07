@@ -1,8 +1,15 @@
 .cup-section {
   position: relative;
-  height: 100vh; /* Exactly 100vh as requested */
+  height: 250vh; /* Restored scroll track */
   width: 100vw;
   z-index: 30;
+}
+
+.cup-sticky-content {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
   background-image: url('/bgg4.png');
   background-size: cover;
   background-position: center;
