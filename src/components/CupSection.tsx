@@ -9,10 +9,10 @@ const CupSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const cupWrapperRef = useRef<HTMLDivElement>(null);
   const cupRef = useRef<HTMLImageElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !cupWrapperRef.current || !cupRef.current || !textRef.current) return;
+    if (!sectionRef.current || !cupWrapperRef.current || !cupRef.current || !logoRef.current) return;
 
     let ctx = gsap.context(() => {
       
@@ -30,7 +30,7 @@ const CupSection: React.FC = () => {
       // Initial state
       gsap.set(cupWrapperRef.current, { x: "-70vw" });
       gsap.set(cupRef.current, { rotation: 0 });
-      gsap.set(textRef.current, { opacity: 0, x: "-10vw" });
+      gsap.set(logoRef.current, { opacity: 0, x: "-10vw" });
       gsap.set(particles, { x: 0, y: 0, scale: 0, opacity: 0, rotation: 0 });
 
       // 1. Cup wrapper moves from left to right
@@ -67,8 +67,8 @@ const CupSection: React.FC = () => {
         ease: "back.out(1.5)"
       }, "-=0.8");
 
-      // 3. Text reveals on the left side
-      tl.to(textRef.current, {
+      // 3. Logo reveals on the left side
+      tl.to(logoRef.current, {
         opacity: 1,
         x: "-25vw", // Adjusted slightly further left so it clears the ingredients
         duration: 1,
@@ -84,13 +84,12 @@ const CupSection: React.FC = () => {
     <section className="cup-section" ref={sectionRef}>
       <div className="cup-sticky-content">
         
-        <div className="cup-text-container" ref={textRef}>
-          <h2 className="cup-title">Crafted with passion.</h2>
-          <p className="cup-paragraph">
-            Every bean tells a story of the Eastern Ghats. 
-            Roasted to absolute perfection, creating a symphony of flavors in every single cup.
-          </p>
-        </div>
+        <img 
+          src={`${import.meta.env.BASE_URL}Araku_logo.png`} 
+          alt="Araku Logo"
+          className="cup-logo" 
+          ref={logoRef} 
+        />
 
         <div className="cup-wrapper" ref={cupWrapperRef}>
           <div className="cup-particles-container">

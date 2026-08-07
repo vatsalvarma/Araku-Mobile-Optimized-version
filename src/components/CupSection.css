@@ -62,28 +62,12 @@
   filter: drop-shadow(20px 20px 40px rgba(0, 0, 0, 0.2));
 }
 
-.cup-text-container {
+.cup-logo {
   position: absolute;
-  z-index: 1; /* Text is behind the cup */
-  max-width: 400px;
-  text-align: left;
+  z-index: 1; /* Logo is behind the cup */
+  width: 40vw;
+  max-width: 500px;
   will-change: transform, opacity;
-}
-
-.cup-title {
-  font-family: 'Playfair Display', serif; /* Matching luxury serif */
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  letter-spacing: -1px;
-}
-
-.cup-paragraph {
-  font-family: var(--sans);
-  font-size: 1.2rem;
-  color: #4a4a4a;
-  line-height: 1.6;
-  font-weight: 300;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+  object-fit: contain;
 }
