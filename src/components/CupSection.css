@@ -1,0 +1,89 @@
+.cup-section {
+  position: relative;
+  height: 250vh; /* Enough scroll height for the rolling animation */
+  width: 100vw;
+  z-index: 30; /* Between FourthSection (20) and FifthSection (40) */
+  background-color: #ffffff;
+}
+
+.cup-sticky-content {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cup-wrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2; /* Cup wrapper sits above text */
+  will-change: transform;
+}
+
+.cup-particles-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Behind the cup */
+}
+
+.cup-particle {
+  position: absolute;
+  will-change: transform, opacity;
+}
+
+.cup-leaf {
+  width: 12vh;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+.cup-bean {
+  width: 8vh;
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.4));
+  border-radius: 50%;
+}
+
+.cup-img {
+  position: relative;
+  height: 60vh;
+  width: auto;
+  z-index: 3; /* Cup sits above particles */
+  will-change: transform;
+  filter: drop-shadow(20px 20px 40px rgba(0, 0, 0, 0.2));
+}
+
+.cup-text-container {
+  position: absolute;
+  z-index: 1; /* Text is behind the cup */
+  max-width: 400px;
+  text-align: left;
+  will-change: transform, opacity;
+}
+
+.cup-title {
+  font-family: 'Playfair Display', serif; /* Matching luxury serif */
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.cup-paragraph {
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  color: #4a4a4a;
+  line-height: 1.6;
+  font-weight: 300;
+}
