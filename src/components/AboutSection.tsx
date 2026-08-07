@@ -62,7 +62,7 @@ const AboutSection: React.FC = () => {
           We believe in true harmony—between the earth and the farmers, the roaster and the bean, and ultimately, between you and your morning ritual.
         </p>
       </div>
-      <img src="/bottle.png" alt="Araku Bottle" className="bottle-img" ref={bottleRef} />
+      <img src={`${import.meta.env.BASE_URL}bottle.png`} alt="Araku Bottle" className="bottle-img" ref={bottleRef} />
     </section>
   );
 };

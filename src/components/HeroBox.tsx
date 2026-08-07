@@ -51,7 +51,7 @@ const HeroBox: React.FC = () => {
 
   return (
     <div className="hero-box-wrapper" ref={wrapperRef}>
-      <img src="/box.png" alt="Araku Premium Box" className="hero-box-img" />
+      <img src={`${import.meta.env.BASE_URL}box.png`} alt="Araku Premium Box" className="hero-box-img" />
     </div>
   );
 };

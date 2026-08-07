@@ -88,7 +88,7 @@ const LoadingScreen: React.FC = () => {
     <div className="loading-screen" ref={containerRef}>
       <div className="loading-content">
         <img 
-          src="/Araku_logo.png" 
+          src={`${import.meta.env.BASE_URL}Araku_logo.png`} 
           alt="Araku Logo" 
           className="loading-logo" 
           ref={logoRef} 

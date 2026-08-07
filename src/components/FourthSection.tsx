@@ -104,19 +104,19 @@ const FourthSection: React.FC = () => {
   return (
     <section className="fourth-section" ref={sectionRef}>
       <div className="fourth-sticky-content">
-        <img src="/Araku_logo.png" alt="Araku Logo" className="fourth-logo" ref={logoRef} />
+        <img src={`${import.meta.env.BASE_URL}Araku_logo.png`} alt="Araku Logo" className="fourth-logo" ref={logoRef} />
         <div className="fourth-bottle-container">
           <div className="particles-container" ref={particlesRef}>
             {Array.from({ length: 12 }).map((_, i) => (
               <img 
                 key={i} 
-                src={i % 2 === 0 ? "/generated_leaf.png" : "/single_bean.png"} 
+                src={i % 2 === 0 ? `${import.meta.env.BASE_URL}generated_leaf.png` : `${import.meta.env.BASE_URL}single_bean.png`}
                 alt="Particle" 
                 className={`fourth-particle ${i % 2 === 0 ? 'particle-leaf' : 'particle-bean'}`} 
               />
             ))}
           </div>
-          <img src="/bottle.png" alt="Araku Bottle" className="fourth-bottle" ref={bottleRef} />
+          <img src={`${import.meta.env.BASE_URL}bottle.png`} alt="Araku Bottle" className="fourth-bottle" ref={bottleRef} />
         </div>
       </div>
     </section>
