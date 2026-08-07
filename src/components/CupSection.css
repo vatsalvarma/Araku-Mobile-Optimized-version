@@ -3,7 +3,9 @@
   height: 250vh; /* Enough scroll height for the rolling animation */
   width: 100vw;
   z-index: 30; /* Between FourthSection (20) and FifthSection (40) */
-  background-color: #ffffff;
+  background-image: url('/bgg4.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .cup-sticky-content {
