@@ -1,0 +1,73 @@
+.about-section {
+  position: sticky;
+  top: 0;
+  background-image: url('/bg2.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Keep it exactly 100vh as requested */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row; /* Stack horizontally */
+  justify-content: space-between; /* Space between text and animated box */
+  align-items: center;
+  padding: 0 5% 0 10%; /* Add more left padding for the text */
+  z-index: 2; /* Sits below the fixed loading screen notch, but in standard flow */
+  overflow: hidden; /* Prevent horizontal scroll when box is animating */
+}
+
+.about-content {
+  max-width: 45%; /* Constrain width so it only takes up the left side */
+  text-align: left; /* Align text to the left */
+  margin-bottom: 0;
+}
+
+.about-content h2 {
+  font-family: var(--sans);
+  font-size: 4rem;
+  font-weight: 800;
+  color: #3E2723; /* Deep coffee brown */
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+}
+
+.bottle-img {
+  position: absolute;
+  right: 20%; /* Positioned closer to the right */
+  bottom: 11%; /* Aligned perfectly with the bottom of the landing box / table */
+  height: 55vh; /* Sized to match the box proportions visually */
+  width: auto;
+  z-index: 1; /* Stays securely behind the hero box */
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+  will-change: transform;
+  opacity: 0; /* Hidden by default until GSAP reveals it */
+  transform: translateX(50px); /* Tucked just enough right under the box */
+}
+
+.about-content p {
+  font-family: var(--sans);
+  font-size: 1.3rem;
+  color: #5D4037;
+  line-height: 1.8;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+.parallax-window {
+  width: 100%;
+  max-width: 1200px;
+  height: 65vh;
+  border-radius: 24px; /* Premium luxury styling */
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(62, 39, 35, 0.15); /* Coffee tinted soft shadow */
+}
+
+.parallax-image {
+  position: absolute;
+  top: -15%;
+  left: 0;
+  width: 100%;
+  height: 130%; /* Extra height to allow the image to travel up and down */
+  object-fit: cover;
+  will-change: transform; /* Hardware accelerate the parallax */
+}

@@ -1,0 +1,22 @@
+.hero-box-wrapper {
+  position: absolute;
+  bottom: -1%; /* Moved slightly down */
+  left: 19.7%; /* Moved slightly to the left */
+  z-index: 8; 
+  perspective: 1000px;
+}
+
+.hero-box-img {
+  width: auto;
+  height: 62vh; /* Massive increase to match the height of the bottle */
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.0s ease;
+  cursor: pointer;
+
+  transform-origin: center bottom;
+}
+
+.hero-box-img:hover {
+  transform: scale(1.08) rotateZ(2deg) rotateY(10deg);
+  filter: drop-shadow(0 30px 50px rgba(212, 175, 55, 0.25)); /* Luxury gold accent glow */
+}

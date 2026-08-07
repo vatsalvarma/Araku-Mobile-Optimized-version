@@ -1,0 +1,55 @@
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100vh;
+  background-color: #F8F5F0; /* Premium Cream */
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 0; /* Animated to notch shape */
+  will-change: width, height, border-radius; /* Hardware acceleration for buttery smoothness */
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.loading-logo {
+  width: 300px; /* Initial large size */
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.05)); /* Subtle shadow */
+}
+
+.progress-container {
+  width: 80%;
+  height: 4px;
+  background-color: rgba(62, 39, 35, 0.1); /* Light brown track */
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background-color: #3E2723; /* Deep Coffee Brown */
+}
+
+.progress-text {
+  color: #3E2723;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+}

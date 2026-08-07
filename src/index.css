@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap');
+
+:root {
+  --text: #f5f5f5;
+  --bg: #090909;
+  --accent: #d4af37;
+  --sans: 'Outfit', system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.main-content {
+  width: 100vw;
+  height: 100vh;
+  /* Premium background setup */
+  background-image: url('/bg.png');
+  background-size: cover;
+  background-position: center;
+  /* background-attachment: fixed; removed to allow normal scrolling */
+  position: relative;
+  z-index: 3; /* Ensure it is higher than about-section (z-index 2) so children can overlap */
+}
+
+

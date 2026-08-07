@@ -1,0 +1,110 @@
+.fifth-section {
+  position: relative;
+  height: 600vh; /* Extremely long scroll area to accommodate four massive wipes */
+  width: 100vw;
+  z-index: 40; 
+  background-color: #0c0806;
+}
+
+.fifth-sticky-content {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.wipe-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: clip-path;
+}
+
+/* Base background colors */
+.layer-1 {
+  background-image: url('/bb1.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.layer-2 {
+  background-color: #ffffff; /* Crisp white wipe */
+  z-index: 2;
+  clip-path: circle(0% at -50% 50%); /* Start hidden */
+}
+
+.layer-3 {
+  background-image: url('/bb2.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 3;
+  clip-path: circle(0% at -50% 50%); /* Start hidden */
+}
+
+.layer-4 {
+  background-color: #2c1b0d; /* Dark espresso coffee brown */
+  z-index: 4;
+  clip-path: circle(0% at -50% 50%); /* Start hidden */
+}
+
+.layer-5 {
+  background-image: url('/bgg3.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 5;
+  clip-path: circle(0% at -50% 50%); /* Start hidden */
+}
+
+/* Content layout mimicking the reference image */
+.wipe-content {
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wipe-subtitle {
+  font-family: monospace; /* Mimics the code-like "> PAGE 01" */
+  font-size: 1rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #8fa5f9; /* Light blue */
+}
+
+.wipe-title {
+  font-family: var(--sans);
+  font-size: clamp(6rem, 15vw, 12rem); /* Massive bold text */
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -4px;
+  margin: 0 0 20px 0;
+}
+
+.wipe-pagination {
+  font-family: monospace;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: #8fa5f9; /* Light blue */
+}
+
+/* Color specific utility classes */
+.text-blue {
+  color: #a4bbfc; /* Light pastel blue like the reference */
+}
+
+.text-yellow {
+  color: #f1c40f; /* Studio yellow */
+}
+
+.text-brown {
+  color: #b0572e; /* Warm coffee brown */
+}
