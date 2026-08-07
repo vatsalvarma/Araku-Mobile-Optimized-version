@@ -19,9 +19,10 @@ const CupSection: React.FC = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 70%", // Start as soon as it enters the viewport
-          end: "bottom 30%", // End as it leaves
+          start: "top top", // Lock it to the screen when it hits the top
+          end: "+=150%", // Keep it locked while they scroll down 1.5x the screen height
           scrub: 1, 
+          pin: true, // This locks the screen in place so they see the full animation!
         }
       });
 
