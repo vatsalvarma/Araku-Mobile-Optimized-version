@@ -1,0 +1,20 @@
+.parallax-divider {
+  position: relative;
+  height: 50vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: 22; /* Sits exactly between FourthSection (20) and HarvestSection (25) */
+  background-color: #0c0806;
+}
+
+.parallax-divider-bg {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%; /* Needs to be taller than 100% so we have room to move it up and down on scroll without exposing the background */
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  will-change: transform;
+}

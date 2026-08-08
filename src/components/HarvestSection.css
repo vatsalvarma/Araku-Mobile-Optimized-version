@@ -1,0 +1,109 @@
+.harvest-section {
+  position: relative;
+  height: 250vh; /* Long scroll track to allow for dramatic scrub animation */
+  width: 100vw;
+  z-index: 25; /* Between FourthSection (20) and CupSection (30) */
+  background-color: #0c0806;
+}
+
+.harvest-sticky-content {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.harvest-forest {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.harvest-man-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 65vh; /* Adjusted for realistic size */
+  width: auto;
+  z-index: 2;
+  will-change: transform;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.harvest-man {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
+}
+
+.harvest-bean {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6vh; /* Size of the coffee beans */
+  z-index: 3; /* Sit on top of the basket/man */
+  will-change: transform;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5));
+}
+
+.harvest-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0c0806;
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.harvest-text-top-left {
+  position: absolute;
+  top: 15vh;
+  left: 10vw;
+  max-width: 400px;
+  z-index: 4;
+  color: #fff;
+  will-change: transform, opacity;
+}
+
+.harvest-text-bottom-right {
+  position: absolute;
+  bottom: 20vh;
+  right: 10vw;
+  max-width: 400px;
+  text-align: right;
+  z-index: 4;
+  color: #fff;
+  will-change: transform, opacity;
+}
+
+.harvest-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.harvest-desc {
+  font-family: var(--sans);
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.6;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}

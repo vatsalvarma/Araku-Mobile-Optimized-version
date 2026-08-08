@@ -1,0 +1,127 @@
+.horizontal-section {
+  width: 100vw;
+  height: 400vh; /* Scroll track for 4 panels */
+  background-color: #2c1b12; /* Dark brown coffee background */
+  z-index: 15; /* Sits below FourthSection (20) */
+  position: relative;
+}
+
+.horizontal-sticky-content {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.horizontal-container {
+  width: 400vw; /* 4 panels * 100vw */
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  will-change: transform;
+}
+
+.horizontal-panel {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel-content {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  max-width: 1400px;
+}
+
+/* Big Editorial Typography */
+.panel-big-title {
+  position: absolute;
+  font-family: 'Playfair Display', serif;
+  font-size: 15vw;
+  font-weight: 400;
+  line-height: 0.8;
+  color: #111;
+  letter-spacing: -2px;
+  z-index: 3;
+  mix-blend-mode: exclusion; /* Creates cool overlap effect with images */
+  color: #fff;
+  top: 10%;
+  left: 0;
+  pointer-events: none;
+}
+
+.title-right {
+  left: auto;
+  right: 0;
+  text-align: right;
+}
+
+.title-center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Removed color shapes */
+
+/* Mask Frames for Clipping Parallax Effect */
+.horiz-mask-frame {
+  position: absolute;
+  overflow: hidden; /* This acts as the clipping window */
+  z-index: 2;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.horiz-mask-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%; /* Massive size to allow extreme panning parallax without exposing borders */
+  height: 200%;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover;
+  will-change: transform;
+  filter: grayscale(100%) contrast(1.1); /* Editorial black and white */
+}
+
+/* Frame Layouts - Expanded for maximum immersion */
+.frame-right { width: 60vw; height: 80vh; right: 0%; top: 10%; }
+.frame-left { width: 60vw; height: 80vh; left: 0%; top: 10%; }
+.frame-center { width: 70vw; height: 80vh; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+/* Small Text Blocks */
+.panel-text-block {
+  position: absolute;
+  max-width: 300px;
+  z-index: 4;
+  color: #ebdaca; /* Light beige for dark background */
+}
+
+.text-bottom-left { bottom: 10%; left: 5%; }
+.text-bottom-right { bottom: 10%; right: 5%; text-align: right; }
+.text-top-left { top: 10%; left: 5%; }
+
+.panel-subtitle {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.panel-text-block p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: #c2aa97; /* Subdued beige */
+}
