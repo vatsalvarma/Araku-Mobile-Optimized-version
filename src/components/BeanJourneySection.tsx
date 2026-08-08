@@ -104,7 +104,7 @@ const BeanJourneySection: React.FC = () => {
       });
 
       // Text Reveal Animations
-      const animateText = (ref: React.RefObject<HTMLDivElement>, time: number) => {
+      const animateText = (ref: React.RefObject<HTMLDivElement | null>, time: number) => {
         if (!ref.current) return;
         tl.fromTo(ref.current.children, 
           { y: 80, opacity: 0 },
@@ -134,7 +134,7 @@ const BeanJourneySection: React.FC = () => {
                 src={`${import.meta.env.BASE_URL}single_bean.png`}
                 alt="Coffee Bean"
                 className="journey-bean"
-                ref={el => beansRef.current[i] = el}
+                ref={el => { beansRef.current[i] = el; }}
               />
             ))}
           </div>

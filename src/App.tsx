@@ -4,7 +4,6 @@ import StorySection from './components/StorySection';
 import FourthSection from './components/FourthSection';
 import HorizontalScrollSection from './components/HorizontalScrollSection';
 import ReverseScrollSection from './components/ReverseScrollSection';
-import WhiteSection from './components/WhiteSection';
 import ParallaxDivider from './components/ParallaxDivider';
 import HarvestSection from './components/HarvestSection';
 import BeanJourneySection from './components/BeanJourneySection';

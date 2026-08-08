@@ -16,7 +16,6 @@ const HorizontalScrollSection: React.FC = () => {
     // We want to translate it by -300vw (so the 4th panel stops on screen).
     let ctx = gsap.context(() => {
       
-      const panels = gsap.utils.toArray('.horizontal-panel', scrollContainerRef.current);
       const titles = gsap.utils.toArray('.panel-big-title', scrollContainerRef.current);
 
       const tl = gsap.timeline({
