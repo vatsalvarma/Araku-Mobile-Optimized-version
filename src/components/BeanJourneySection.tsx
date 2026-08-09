@@ -18,7 +18,13 @@ const BeanJourneySection: React.FC = () => {
   useEffect(() => {
     if (!sectionRef.current || !canvasRef.current || !basketRef.current || !cupRef.current) return;
 
-    let ctx = gsap.context(() => {
+    let ctx = gsap.matchMedia();
+
+    ctx.add({
+      isDesktop: "(min-width: 769px)",
+      isMobile: "(max-width: 768px)"
+    }, (context) => {
+      let { isMobile } = context.conditions as { isMobile: boolean };
       
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -29,14 +35,11 @@ const BeanJourneySection: React.FC = () => {
         }
       });
 
-      // We have 3 'pages' in the canvas. 
-      // Camera translation: Move canvas up by -100vh to go to Page 2, and -200vh to go to Page 3.
-      
       // Page 1: Basket tilt and bean burst (0 to 0.2)
       tl.to(basketRef.current, {
         y: "-10vh",
-        x: "10vw",
-        rotation: 45,
+        x: isMobile ? "-10vw" : "10vw",
+        rotation: isMobile ? -45 : 45,
         duration: 0.2,
         ease: "power1.inOut"
       }, 0);

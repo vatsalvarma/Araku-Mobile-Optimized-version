@@ -88,3 +88,18 @@
   filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
   z-index: 3;
 }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .fourth-bottle {
+    height: 45vh; /* Reduced size for phone */
+  }
+  
+  .particle-leaf {
+    width: 10vh; /* Proportionally reduce leaves */
+  }
+  
+  .particle-bean {
+    width: 7vh; /* Proportionally reduce beans */
+  }
+}

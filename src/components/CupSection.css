@@ -73,3 +73,14 @@
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
   object-fit: contain;
 }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .cup-img {
+    height: 40vh; /* Reduced size for phone */
+  }
+  
+  .cup-logo {
+    width: 70vw; /* Adjust logo proportionally */
+  }
+}

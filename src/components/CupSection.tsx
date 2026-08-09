@@ -14,8 +14,10 @@ const CupSection: React.FC = () => {
   useEffect(() => {
     if (!sectionRef.current || !cupWrapperRef.current || !cupRef.current || !logoRef.current) return;
 
-    let ctx = gsap.context(() => {
-      
+    let ctx = gsap.matchMedia();
+
+    ctx.add("(min-width: 769px)", () => {
+      // DESKTOP ANIMATION
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -27,38 +29,24 @@ const CupSection: React.FC = () => {
 
       const particles = gsap.utils.toArray('.cup-particle', sectionRef.current);
 
-      // Initial state
-      gsap.set(cupWrapperRef.current, { x: "-70vw" });
+      gsap.set(cupWrapperRef.current, { x: "-70vw", y: 0 });
       gsap.set(cupRef.current, { rotation: 0 });
-      gsap.set(logoRef.current, { opacity: 0, x: "-10vw" });
+      gsap.set(logoRef.current, { opacity: 0, x: "-10vw", y: 0 });
       gsap.set(particles, { x: 0, y: 0, scale: 0, opacity: 0, rotation: 0 });
 
-      // 1. Cup wrapper moves from left to right
-      tl.to(cupWrapperRef.current, {
-        x: "20vw", 
-        duration: 2,
-        ease: "power2.inOut"
-      });
+      tl.to(cupWrapperRef.current, { x: "20vw", duration: 2, ease: "power2.inOut" });
+      tl.to(cupRef.current, { rotation: 720, duration: 2, ease: "power2.inOut" }, "<");
 
-      // 1.5 Cup image rotates inside the wrapper simultaneously
-      tl.to(cupRef.current, {
-        rotation: 720, 
-        duration: 2,
-        ease: "power2.inOut"
-      }, "<"); // "<" means start at the exact same time as previous animation
-
-      // 2. Ingredients shoot out from behind the cup just before it stops
       tl.to(particles, {
         x: (i) => {
-          // Left-side semi-circle (top -> left -> bottom)
           const angle = (Math.PI / 2) + (i / (particles.length - 1)) * Math.PI;
-          const distance = 10 + Math.random() * 8; // 10vw to 18vw
+          const distance = 10 + Math.random() * 8; 
           return Math.cos(angle) * distance + "vw";
         },
         y: (i) => {
           const angle = (Math.PI / 2) + (i / (particles.length - 1)) * Math.PI;
           const distance = 10 + Math.random() * 8; 
-          return Math.sin(angle) * distance + "vw"; // using vw for circular shape relative to screen width
+          return Math.sin(angle) * distance + "vw"; 
         },
         scale: () => 0.6 + Math.random() * 0.4,
         rotation: () => -180 + Math.random() * 360,
@@ -67,15 +55,52 @@ const CupSection: React.FC = () => {
         ease: "back.out(1.5)"
       }, "-=0.8");
 
-      // 3. Logo reveals on the left side
-      tl.to(logoRef.current, {
-        opacity: 1,
-        x: "-25vw", // Adjusted slightly further left so it clears the ingredients
-        duration: 1,
-        ease: "power2.out"
-      }, "-=1.0"); 
+      tl.to(logoRef.current, { opacity: 1, x: "-25vw", duration: 1, ease: "power2.out" }, "-=1.0"); 
+    });
 
-    }, sectionRef);
+    ctx.add("(max-width: 768px)", () => {
+      // MOBILE ANIMATION
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1, 
+        }
+      });
+
+      const particles = gsap.utils.toArray('.cup-particle', sectionRef.current);
+
+      gsap.set(cupWrapperRef.current, { y: "-80vh", x: 0 });
+      gsap.set(cupRef.current, { rotation: 0 });
+      gsap.set(logoRef.current, { opacity: 0, y: "50vh", x: 0 });
+      gsap.set(particles, { x: 0, y: 0, scale: 0, opacity: 0, rotation: 0 });
+
+      tl.to(cupWrapperRef.current, { y: "5vh", duration: 2, ease: "power2.inOut" });
+      tl.to(cupRef.current, { rotation: 720, duration: 2, ease: "power2.inOut" }, "<");
+
+      tl.to(particles, {
+        x: (i) => {
+          // Bottom semi-circle (right -> bottom -> left)
+          const angle = (i / (particles.length - 1)) * Math.PI;
+          const distance = 30 + Math.random() * 15; // wide horizontal spread
+          return Math.cos(angle) * distance + "vw";
+        },
+        y: (i) => {
+          const angle = (i / (particles.length - 1)) * Math.PI;
+          const distance = 8 + Math.random() * 5; 
+          // Just below the cup's edge (cup bottom is ~20vh)
+          return 16 + (Math.sin(angle) * distance) + "vh"; 
+        },
+        scale: () => 0.4 + Math.random() * 0.4,
+        rotation: () => -180 + Math.random() * 360,
+        opacity: 1,
+        duration: 1,
+        ease: "back.out(1.5)"
+      }, "-=0.8");
+
+      tl.to(logoRef.current, { opacity: 0.8, y: "-15vh", duration: 1, ease: "power2.out" }, "-=1.5"); 
+    });
 
     return () => ctx.revert();
   }, []);

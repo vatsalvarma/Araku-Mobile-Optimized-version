@@ -10,42 +10,49 @@ const HeroBox: React.FC = () => {
 
   useEffect(() => {
     if (wrapperRef.current) {
-      // Create a timeline connected to scroll
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".main-content", // Watch the hero section
-          start: "top top", // Start when we begin scrolling
-          end: "+=100%", // End when we've scrolled down a full viewport height
-          scrub: 1.5, // Smooth, slightly delayed scrub for premium feel
-        }
+      let ctx = gsap.matchMedia();
+
+      ctx.add({
+        isDesktop: "(min-width: 769px)",
+        isMobile: "(max-width: 768px)"
+      }, (context) => {
+        let { isMobile } = context.conditions as { isMobile: boolean };
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".main-content",
+            start: "top top",
+            end: "+=100%",
+            scrub: 1.5,
+          }
+        });
+
+        // X moves with an ease, creating the "belly" of the curve
+        tl.to(wrapperRef.current, {
+          x: isMobile ? "20vw" : "55vw", // Prevent moving too far right on mobile
+          rotation: 0,
+          ease: "power1.inOut"
+        }, 0);
+
+        // Y moves linearly, continuously falling with the scroll
+        tl.to(wrapperRef.current, {
+          y: isMobile ? "85vh" : "95vh", // Prevent falling out of the bottom on mobile
+          scale: 0.85,
+          ease: "none"
+        }, 0);
+
+        // Pin the box in place while scrolling through the about section
+        ScrollTrigger.create({
+          trigger: ".about-section",
+          start: "top top",
+          endTrigger: ".story-section",
+          end: "top top",
+          pin: wrapperRef.current,
+          pinSpacing: false,
+        });
       });
 
-      // Curved Path Magic:
-      // We animate X and Y together with different easings.
-      
-      // X moves with an ease, creating the "belly" of the curve
-      tl.to(wrapperRef.current, {
-        x: "55vw", // Move to the right side
-        rotation: 0, // Kept perfectly straight per user request
-        ease: "power1.inOut"
-      }, 0);
-
-      // Y moves linearly, continuously falling with the scroll
-      tl.to(wrapperRef.current, {
-        y: "95vh", // Move down further to land beautifully in the middle of the About section
-        scale: 0.85, // Shrink slightly
-        ease: "none"
-      }, 0);
-
-      // Pin the box in place while scrolling through the about section
-      ScrollTrigger.create({
-        trigger: ".about-section", // Start pinning when about section reaches top
-        start: "top top",
-        endTrigger: ".story-section", // Stop pinning when story section reaches top
-        end: "top top",
-        pin: wrapperRef.current,
-        pinSpacing: false, // Don't add extra space
-      });
+      return () => ctx.revert();
     }
   }, []);
 

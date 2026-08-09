@@ -20,3 +20,15 @@
   transform: scale(1.08) rotateZ(2deg) rotateY(10deg);
   filter: drop-shadow(0 30px 50px rgba(212, 175, 55, 0.25)); /* Luxury gold accent glow */
 }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .hero-box-wrapper {
+    bottom: 2%; /* Moved down */
+    left: 35%; /* Moved to the right */
+  }
+  
+  .hero-box-img {
+    height: 30vh; /* Reduced size for phone */
+  }
+}

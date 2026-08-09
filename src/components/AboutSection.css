@@ -71,3 +71,39 @@
   object-fit: cover;
   will-change: transform; /* Hardware accelerate the parallax */
 }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10vh 5% 0 5%; /* Padding at the top */
+  }
+
+  .about-content {
+    max-width: 95%;
+    text-align: center;
+    z-index: 5; /* Keep above absolute images */
+  }
+
+  .about-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+  }
+
+  .about-content p {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+
+  .about-content p:last-child {
+    display: none; /* Hide the second paragraph on mobile to save space */
+  }
+
+  .bottle-img {
+    height: 25vh; /* Further reduced size for phone */
+    bottom: 21%; /* Moved up */
+    right: 30%; /* Moved to the left */
+    transform: translateX(0); /* Remove the desktop rightward shift */
+  }
+}

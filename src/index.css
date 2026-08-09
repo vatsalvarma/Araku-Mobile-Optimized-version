@@ -35,4 +35,9 @@ body, html {
   z-index: 3; /* Ensure it is higher than about-section (z-index 2) so children can overlap */
 }
 
-
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .main-content {
+    background-image: url('/M1.png');
+  }
+}

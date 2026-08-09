@@ -131,3 +131,38 @@
   font-style: italic;
   color: #c2aa97; /* Subdued beige */
 }
+
+/* Mobile Optimizations (9:16) */
+@media (max-width: 768px) {
+  .mask-frame {
+    width: 90vw;
+    height: 45vh;
+    left: 5%;
+    right: auto;
+    bottom: 5%;
+    top: auto;
+    transform: none;
+  }
+  
+  .reverse-big-title {
+    font-size: 25vw;
+    top: 5% !important;
+    left: 5% !important;
+    right: auto !important;
+    text-align: left !important;
+    transform: none !important;
+  }
+  
+  .reverse-text-block {
+    top: 28% !important;
+    bottom: auto !important;
+    left: 5% !important;
+    right: auto !important;
+    text-align: left !important;
+    max-width: 90vw;
+  }
+  
+  .reverse-text-block p {
+    font-size: 1rem;
+  }
+}
