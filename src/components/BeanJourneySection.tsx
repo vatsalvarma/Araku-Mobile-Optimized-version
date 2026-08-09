@@ -18,13 +18,8 @@ const BeanJourneySection: React.FC = () => {
   useEffect(() => {
     if (!sectionRef.current || !canvasRef.current || !basketRef.current || !cupRef.current) return;
 
-    let ctx = gsap.matchMedia();
-
-    ctx.add({
-      isDesktop: "(min-width: 769px)",
-      isMobile: "(max-width: 768px)"
-    }, (context) => {
-      let { isMobile } = context.conditions as { isMobile: boolean };
+    let ctx = gsap.context(() => {
+      const isMobile = window.innerWidth <= 768;
       
       const tl = gsap.timeline({
         scrollTrigger: {

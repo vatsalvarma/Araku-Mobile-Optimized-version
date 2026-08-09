@@ -12,12 +12,7 @@ const HeroBox: React.FC = () => {
     if (wrapperRef.current) {
       let ctx = gsap.matchMedia();
 
-      ctx.add({
-        isDesktop: "(min-width: 769px)",
-        isMobile: "(max-width: 768px)"
-      }, (context) => {
-        let { isMobile } = context.conditions as { isMobile: boolean };
-
+      ctx.add("(min-width: 769px)", () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: ".main-content",
@@ -27,21 +22,32 @@ const HeroBox: React.FC = () => {
           }
         });
 
-        // X moves with an ease, creating the "belly" of the curve
-        tl.to(wrapperRef.current, {
-          x: isMobile ? "20vw" : "55vw", // Prevent moving too far right on mobile
-          rotation: 0,
-          ease: "power1.inOut"
-        }, 0);
+        tl.to(wrapperRef.current, { x: "55vw", rotation: 0, ease: "power1.inOut" }, 0);
+        tl.to(wrapperRef.current, { y: "95vh", scale: 0.85, ease: "none" }, 0);
 
-        // Y moves linearly, continuously falling with the scroll
-        tl.to(wrapperRef.current, {
-          y: isMobile ? "85vh" : "95vh", // Prevent falling out of the bottom on mobile
-          scale: 0.85,
-          ease: "none"
-        }, 0);
+        ScrollTrigger.create({
+          trigger: ".about-section",
+          start: "top top",
+          endTrigger: ".story-section",
+          end: "top top",
+          pin: wrapperRef.current,
+          pinSpacing: false,
+        });
+      });
 
-        // Pin the box in place while scrolling through the about section
+      ctx.add("(max-width: 768px)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".main-content",
+            start: "top top",
+            end: "+=100%",
+            scrub: 1.5,
+          }
+        });
+
+        tl.to(wrapperRef.current, { x: "20vw", rotation: 0, ease: "power1.inOut" }, 0);
+        tl.to(wrapperRef.current, { y: "85vh", scale: 0.85, ease: "none" }, 0);
+
         ScrollTrigger.create({
           trigger: ".about-section",
           start: "top top",
