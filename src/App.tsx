@@ -17,19 +17,16 @@ import './App.css'; // Optional, but we'll use index.css mostly
 
 gsap.registerPlugin(ScrollTrigger);
 
-// CRITICAL MOBILE OPTIMIZATION:
-// This prevents GSAP from breaking when the mobile address bar shows/hides!
-ScrollTrigger.config({ ignoreMobileResize: true });
-
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     if (isLoaded) {
-      // Only refresh once after the DOM paints. No continuous observers!
+      // Refresh ScrollTrigger multiple times to catch any late layout shifts on mobile
       setTimeout(() => ScrollTrigger.refresh(), 100);
+      setTimeout(() => ScrollTrigger.refresh(), 500);
       setTimeout(() => ScrollTrigger.refresh(), 1000);
-      setTimeout(() => ScrollTrigger.refresh(), 3000);
+      setTimeout(() => ScrollTrigger.refresh(), 2000);
     }
   }, [isLoaded]);
 

@@ -132,13 +132,13 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onImagesLoaded }) => {
       }
     };
 
-    // Fallback timer just in case network hangs forever (max 10s wait)
+    // Fallback timer just in case network hangs forever (max 30s wait)
     const fallbackTimer = setTimeout(() => {
       if (!hasFinished) {
         hasFinished = true;
         finishLoading();
       }
-    }, 10000);
+    }, 30000);
 
     IMAGES_TO_PRELOAD.forEach(src => {
       const img = new Image();
