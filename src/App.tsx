@@ -27,9 +27,9 @@ function App() {
   useEffect(() => {
     if (isLoaded) {
       // Only refresh once after the DOM paints. No continuous observers!
-      setTimeout(() => {
-        ScrollTrigger.refresh();
-      }, 500);
+      setTimeout(() => ScrollTrigger.refresh(), 100);
+      setTimeout(() => ScrollTrigger.refresh(), 1000);
+      setTimeout(() => ScrollTrigger.refresh(), 3000);
     }
   }, [isLoaded]);
 
