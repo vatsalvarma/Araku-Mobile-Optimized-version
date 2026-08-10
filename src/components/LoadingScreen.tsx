@@ -32,7 +32,17 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onImagesLoaded }) => {
     'lookbook_machine.png',
     'man.png',
     'valley.png',
-    'single_bean.png'
+    'single_bean.png',
+    'M1.png',
+    'bg.png',
+    'bg2.png',
+    'bg3.png',
+    'bg4.png',
+    'bgg4.png',
+    'box.png',
+    'l1.png',
+    'l2.png',
+    'l3.png'
   ];
 
   useEffect(() => {

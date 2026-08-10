@@ -108,3 +108,18 @@
 .text-brown {
   color: #b0572e; /* Warm coffee brown */
 }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .layer-1 {
+    background-image: url('/l1.png');
+  }
+  
+  .layer-3 {
+    background-image: url('/l2.png');
+  }
+  
+  .layer-5 {
+    background-image: url('/l3.png');
+  }
+}
