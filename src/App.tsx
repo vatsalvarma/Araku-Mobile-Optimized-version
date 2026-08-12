@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Lenis from 'lenis';
 import LoadingScreen from './components/LoadingScreen';
 import AboutSection from './components/AboutSection';
 import StorySection from './components/StorySection';
@@ -18,43 +17,15 @@ import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Prevent address bar resize from recalculating all triggers
-ScrollTrigger.config({ ignoreMobileResize: true });
-
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const lenisRef = useRef<Lenis | null>(null);
 
-  // Initialize Lenis smooth scroll + GSAP integration
   useEffect(() => {
-    if (!isLoaded) return;
-
-    const lenis = new Lenis({
-      autoRaf: false,       // We drive Lenis via GSAP ticker, not its own RAF
-      lerp: 0.1,
-      smoothWheel: true,
-      touchMultiplier: 2,   // Make touch scroll responsive on mobile
-    });
-    lenisRef.current = lenis;
-
-    // Connect Lenis scroll updates to ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
-
-    // Drive Lenis from GSAP's animation ticker (single RAF loop)
-    const rafCallback = (time: number) => {
-      lenis.raf(time * 1000);
-    };
-    gsap.ticker.add(rafCallback);
-    gsap.ticker.lagSmoothing(0);
-
-    // Refresh ScrollTrigger after layout settles
-    setTimeout(() => ScrollTrigger.refresh(), 200);
-    setTimeout(() => ScrollTrigger.refresh(), 1000);
-
-    return () => {
-      gsap.ticker.remove(rafCallback);
-      lenis.destroy();
-    };
+    if (isLoaded) {
+      ScrollTrigger.refresh();
+      setTimeout(() => ScrollTrigger.refresh(), 500);
+      setTimeout(() => ScrollTrigger.refresh(), 1500);
+    }
   }, [isLoaded]);
 
   return (
