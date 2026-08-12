@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -18,11 +18,18 @@ import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Prevent mobile address bar resize from breaking ScrollTrigger calculations
+ScrollTrigger.config({ ignoreMobileResize: true });
+
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isLoaded) {
+    if (isLoaded && contentRef.current) {
+      // Safe GSAP fade-in that doesn't break sticky positioning on mobile
+      gsap.fromTo(contentRef.current, { opacity: 0 }, { opacity: 1, duration: 1.5 });
+
       ScrollTrigger.refresh();
       setTimeout(() => ScrollTrigger.refresh(), 500);
       setTimeout(() => ScrollTrigger.refresh(), 1500);
@@ -34,7 +41,7 @@ function App() {
       <LoadingScreen onImagesLoaded={() => setIsLoaded(true)} />
       
       {isLoaded && (
-        <div style={{ animation: 'fadeIn 1.5s forwards' }}>
+        <div ref={contentRef}>
           {/* Main Content Area (Hero) */}
           <main className="main-content">
             <HeroBox />

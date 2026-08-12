@@ -13,7 +13,6 @@ body, html {
   background-color: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  overflow-x: hidden;
 }
 
 #root {
@@ -27,7 +26,7 @@ body, html {
 }
 
 .main-content {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   /* Premium background setup */
   background-image: url('/bg.png');
