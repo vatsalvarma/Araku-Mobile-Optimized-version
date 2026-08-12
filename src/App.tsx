@@ -30,18 +30,21 @@ function App() {
     if (!isLoaded) return;
 
     const lenis = new Lenis({
+      autoRaf: false,       // We drive Lenis via GSAP ticker, not its own RAF
       lerp: 0.1,
       smoothWheel: true,
+      touchMultiplier: 2,   // Make touch scroll responsive on mobile
     });
     lenisRef.current = lenis;
 
     // Connect Lenis scroll updates to ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
 
-    // Sync Lenis with GSAP's animation ticker
-    gsap.ticker.add((time) => {
+    // Drive Lenis from GSAP's animation ticker (single RAF loop)
+    const rafCallback = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
+    gsap.ticker.add(rafCallback);
     gsap.ticker.lagSmoothing(0);
 
     // Refresh ScrollTrigger after layout settles
@@ -49,7 +52,7 @@ function App() {
     setTimeout(() => ScrollTrigger.refresh(), 1000);
 
     return () => {
-      gsap.ticker.remove(lenis.raf);
+      gsap.ticker.remove(rafCallback);
       lenis.destroy();
     };
   }, [isLoaded]);
