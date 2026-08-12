@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from 'lenis';
 import LoadingScreen from './components/LoadingScreen';
 import AboutSection from './components/AboutSection';
 import StorySection from './components/StorySection';
@@ -13,7 +14,7 @@ import BeanJourneySection from './components/BeanJourneySection';
 import CupSection from './components/CupSection';
 import FifthSection from './components/FifthSection';
 import HeroBox from './components/HeroBox';
-import './App.css'; // Optional, but we'll use index.css mostly
+import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,15 +23,35 @@ ScrollTrigger.config({ ignoreMobileResize: true });
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const lenisRef = useRef<Lenis | null>(null);
 
+  // Initialize Lenis smooth scroll + GSAP integration
   useEffect(() => {
-    if (isLoaded) {
-      // Refresh ScrollTrigger multiple times to catch any late layout shifts on mobile
-      setTimeout(() => ScrollTrigger.refresh(), 100);
-      setTimeout(() => ScrollTrigger.refresh(), 500);
-      setTimeout(() => ScrollTrigger.refresh(), 1000);
-      setTimeout(() => ScrollTrigger.refresh(), 2000);
-    }
+    if (!isLoaded) return;
+
+    const lenis = new Lenis({
+      lerp: 0.1,
+      smoothWheel: true,
+    });
+    lenisRef.current = lenis;
+
+    // Connect Lenis scroll updates to ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+
+    // Sync Lenis with GSAP's animation ticker
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // Refresh ScrollTrigger after layout settles
+    setTimeout(() => ScrollTrigger.refresh(), 200);
+    setTimeout(() => ScrollTrigger.refresh(), 1000);
+
+    return () => {
+      gsap.ticker.remove(lenis.raf);
+      lenis.destroy();
+    };
   }, [isLoaded]);
 
   return (
