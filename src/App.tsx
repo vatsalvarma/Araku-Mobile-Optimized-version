@@ -17,6 +17,12 @@ import './App.css'; // Optional, but we'll use index.css mostly
 
 gsap.registerPlugin(ScrollTrigger);
 
+// CRITICAL MOBILE FIXES:
+// normalizeScroll forces ScrollTrigger to use its own scroll proxy on touch devices,
+// which prevents the address bar show/hide from breaking scroll positions.
+ScrollTrigger.normalizeScroll(true);
+ScrollTrigger.config({ ignoreMobileResize: true });
+
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 

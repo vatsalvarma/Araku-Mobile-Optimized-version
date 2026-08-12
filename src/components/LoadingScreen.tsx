@@ -106,7 +106,13 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onImagesLoaded }) => {
             borderRadius: '0 0 24px 24px',
             duration: 1.8,
             ease: 'expo.inOut',
-            delay: 0.3 
+            delay: 0.3,
+            onComplete: () => {
+              // CRITICAL: Stop intercepting touch events on mobile!
+              if (containerRef.current) {
+                containerRef.current.style.pointerEvents = 'none';
+              }
+            }
           });
           
           // Shrink the logo perfectly into the notch

@@ -15,12 +15,18 @@ body, html {
   background-color: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  overflow-x: hidden;
+  /* DO NOT put overflow: hidden on body — it breaks ScrollTrigger on mobile! */
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
+  overflow-x: hidden; /* Moved here from body — safe for ScrollTrigger */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .main-content {
